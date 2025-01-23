@@ -1,5 +1,7 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
+import Footer from '../components/Footer.astro'
 
 const pageTitle = "Sobre Mim"
 
@@ -8,15 +10,15 @@ const identify = {
   country: "Brasil",
   occupation: "Desenvolvedor Full Stack",
   hobbies: ["Ler", "Codificar", "Assistir"],
-};
+}
 
-const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "Astro", "Express", "Python", "Node.JS"];
+const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "Astro", "Express", "Python", "Node.JS"]
 
-const happy = true;
-const finished = false;
-const goal = 3;
+const happy = true
+const finished = false
+const goal = 3
 
-const skillColor = "navy";
+const skillColor = "navy"
 const fontWeight = "bold"
 const textCase = "uppercase"
 ---
@@ -34,9 +36,7 @@ const textCase = "uppercase"
     </style>
   </head>
   <body>
-    <a href="/">Início</a>
-    <a href="/about/">Sobre</a>
-    <a href="/blog/">Blog</a>
+    <Navigation/>
     
     <h1>{pageTitle}</h1>
     <h2>... e meu novo site Astro!</h2>
@@ -63,5 +63,7 @@ const textCase = "uppercase"
     {finished && <p>Eu terminei esse tutorial!</p>}
     
     {goal === 3 ? <p>Minha meta é terminar em 3 dias.</p> : <p>Minha meta não é em 3 dias.</p>}
+
+    <Footer/>
   </body>
 </html>
