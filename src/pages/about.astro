@@ -1,9 +1,6 @@
 ---
-import '../styles/global.css'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-
-const pageTitle = "Sobre Mim"
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Sobre Mim";
 
 const identify = {
   firstName: "Miguel",
@@ -22,51 +19,37 @@ const skillColor = "navy"
 const fontWeight = "bold"
 const textCase = "uppercase"
 ---
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-      }
-    </style>
-  </head>
-  <body>
-    <Header/>
-    
-    <h1>{pageTitle}</h1>
-    <h2>... e meu novo site Astro!</h2>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>... e meu novo site Astro!</h2>
 
-    <p>Estou resolvendo o tutorial introdutório do Astro. Esta é a segunda página no meu website, e é a primeira que eu mesmo construí!</p>
+  <p>Estou resolvendo o tutorial introdutório do Astro. Esta é a segunda página no meu website, e é a primeira que eu mesmo construí!</p>
 
-    <p>Este site será atualizado enquanto eu completo mais desse tutorial, então continue verificando e veja como minha jornada está indo!</p>
+  <p>Este site será atualizado enquanto eu completo mais desse tutorial, então continue verificando e veja como minha jornada está indo!</p>
 
-    <p>Aqui estão alguns fatos sobre mim:</p>
-    <ul>
-      <li>Meu nome é {identify.firstName}.</li>
-      <li>Eu moro no {identify.country} e eu trabalho como um {identify.occupation}.</li>
-      {identify.hobbies.length >= 2 &&
-        <li>Dois dos meus hobbies são: {identify.hobbies[0]} e {identify.hobbies[1]}.</li>
-      }
-    </ul>
-    <p>Minhas habilidades são:</p>
-    <ul>
-      {skills.map(habilidade => <li class="skill">{habilidade}</li>)}
-    </ul>
+  <p>Aqui estão alguns fatos sobre mim:</p>
+  <ul>
+    <li>Meu nome é {identify.firstName}.</li>
+    <li>Eu moro no {identify.country} e eu trabalho como um {identify.occupation}.</li>
+    {identify.hobbies.length >= 2 &&
+      <li>Dois dos meus hobbies são: {identify.hobbies[0]} e {identify.hobbies[1]}.</li>
+    }
+  </ul>
+  <p>Minhas habilidades são:</p>
+  <ul>
+    {skills.map(habilidade => <li class="skill">{habilidade}</li>)}
+  </ul>
 
-    {happy && <p>Estou feliz em estar aprendendo Astro!</p>}
+  {happy && <p>Estou feliz em estar aprendendo Astro!</p>}
 
-    {finished && <p>Eu terminei esse tutorial!</p>}
-    
-    {goal === 3 ? <p>Minha meta é terminar em 3 dias.</p> : <p>Minha meta não é em 3 dias.</p>}
+  {finished && <p>Eu terminei esse tutorial!</p>}
+  
+  {goal === 3 ? <p>Minha meta é terminar em 3 dias.</p> : <p>Minha meta não é em 3 dias.</p>}
+</BaseLayout>
 
-    <Footer/>
-    <script>
-      import "../scripts/menu.ts"
-    </script>
-  </body>
-</html>
+<style define:vars={{skillColor, fontWeight, textCase}}>
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
