@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = "Sobre Mim"
 
 const identify = {
@@ -13,17 +15,29 @@ const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "Astro", "Express", "
 const happy = true;
 const finished = false;
 const goal = 3;
+
+const skillColor = "navy";
+const fontWeight = "bold"
+const textCase = "uppercase"
 ---
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Início</a>
     <a href="/about/">Sobre</a>
     <a href="/blog/">Blog</a>
+    
     <h1>{pageTitle}</h1>
     <h2>... e meu novo site Astro!</h2>
 
@@ -41,7 +55,7 @@ const goal = 3;
     </ul>
     <p>Minhas habilidades são:</p>
     <ul>
-      {skills.map(habilidade => <li>{habilidade}</li>)}
+      {skills.map(habilidade => <li class="skill">{habilidade}</li>)}
     </ul>
 
     {happy && <p>Estou feliz em estar aprendendo Astro!</p>}
